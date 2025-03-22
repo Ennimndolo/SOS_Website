@@ -1,0 +1,74 @@
+
+
+
+
+/* Navigation styles */
+#nav-hum {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: dodgerblue;
+    padding: 0.8em 2em;
+    color: white;
+    position: relative;
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Default navigation links */
+.nav-links {
+    list-style: none;
+    display: none;
+}
+
+.nav-links li {
+    
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* Hamburger menu button */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background-color: rgb(49, 21, 94);
+    margin: 4px;
+    border-radius: 5px;
+}
+
+/* Display navigation links when active */
+.nav-links.active {
+    display: flex;
+}
+
+/* Media Query for Mobile view */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: dodgerblue;
+        text-align: center;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+}

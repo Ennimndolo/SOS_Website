@@ -1,0 +1,78 @@
+<?php
+// Include the PHP files that handle dynamic data
+include 'php/dashboard.php';
+include 'php/getAccountBalance.php';
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information System</title>
+    <link rel="stylesheet" href="dash.css">
+</head>
+<body>
+
+<header>
+    <div class="title">STUDENT INFORMATION SYSTEM</div>
+    <div class="user-info">
+        <span>ENSON | Student Account</span>
+        <img src="poly.png" alt="User Profile">
+    </div>
+</header>
+
+<nav>
+    <a href="#">My account</a>
+    <a href="#">Profile</a>
+    <a href="#">Exam results</a>
+    <a href="#">Vote</a>
+    <a href="#">Accommodation</a>
+    <a href="#">Regulations</a>
+    <a href="#">Administrative diary</a>
+</nav>
+
+<div class="dashboard">
+    <!-- Info Boxes -->
+    <div class="info-box">
+        <div>
+            <h3>Account Balance</h3>
+            <p id="account-balance"><?php echo $accountBalance; ?></p>
+        </div>
+        <div>
+            <h3>Registration Status</h3>
+            <p>BTECH-MVT3 (Registered)</p>
+        </div>
+        <div>
+            <h3>Registration Period</h3>
+            <p>29 July 2024 - 9 Sep 2024 (Closed)</p>
+        </div>
+    </div>
+
+    <!-- Links -->
+    <div class="links">
+        <a href="#">Examination results available</a>
+        <a href="#">Course evaluation</a>
+        <a href="javascript:void(0);" onclick="updatePhoneNumber();">Update Phone number</a>
+    </div>
+
+    <!-- Calendar of Events -->
+    <div class="calendar">
+        <h3>Calendar of Events</h3>
+        <!-- Calendar items will be dynamically generated here -->
+    </div>
+
+    <!-- Modules to Attend -->
+    <div class="modules">
+        <h3>Modules to Attend (Semester 2)</h3>
+        <p>1. TED-TPR-321 - Teaching Practice</p>
+    </div>
+</div>
+
+<footer>
+    &copy; Copyright 2024 - Poly SMIS V2.0
+</footer>
+
+<script src="scriptDash.js"></script>
+</body>
+</html>

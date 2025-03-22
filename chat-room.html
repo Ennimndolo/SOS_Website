@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion Room</title>
+    <style>
+        /* General body and background settings */
+        body {
+           font-family: maiandra GD;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        /* Centered container for the chat */
+        .chat-container {
+            width: 70%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+
+        /* Chat header styling */
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Styling for the chat box */
+        .chat-box {
+            width: 100%;
+            height: 350px;
+            overflow-y: scroll;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .chat-box .message {
+            margin-bottom: 15px;
+        }
+
+        .chat-box .message span {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        /* Input and button container */
+        .input-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Message input field */
+        #message {
+            width: 80%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-right: 10px;
+            outline: none;
+        }
+
+        #message:focus {
+            border-color: #4CAF50;
+        }
+
+        /* Send button styling */
+        #send {
+            padding: 12px 25px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        #send:hover {
+            background-color: #45a049;
+        }
+
+        /* Button to join chat */
+        #joinBtn {
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: background-color 0.3s ease;
+        }
+
+        #joinBtn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Admin tools visibility */
+        .admin-tools {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .admin-tools button {
+            padding: 10px 20px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .admin-tools button:hover {
+            background-color: #e55347;
+        }
+
+        /* Responsive design */
+        @media screen and (max-width: 768px) {
+            .chat-container {
+                width: 90%;
+            }
+
+            #message {
+                width: 75%;
+            }
+
+            #send {
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Welcome to the Discussion Room</h1>
+
+<!-- Role Selection -->
+<div style="text-align: center;">
+    <label for="roleSelect">Select your role:</label>
+    <select id="roleSelect">
+        <option value="student">Student</option>
+        <option value="instructor">Instructor</option>
+        <option value="admin">Administrator</option>
+    </select>
+    <button id="joinBtn" onclick="joinChat()">Join Chat</button>
+</div>
+
+<!-- Chat Container -->
+<div class="chat-container" id="chatContainer" style="display: none;">
+    <div class="chat-box" id="chatBox">
+        <!-- Messages will appear here -->
+    </div>
+    <div class="input-container">
+        <input type="text" id="message" placeholder="Type your message..." />
+        <button id="send" onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<!-- Admin Tools (Visible only for Admin) -->
+<div class="admin-tools" id="adminTools">
+    <button onclick="clearChat()">Clear Chat</button>
+    <button onclick="viewReports()">View Reports</button>
+    <a href="class.html">Class_Dashboard</a>
+</div>
+
+<script>
+    // User role
+    let userRole = '';
+    let isUserJoined = false;
+
+    // Function to simulate user joining the chat based on selected role
+    function joinChat() {
+        userRole = document.getElementById('roleSelect').value;
+        isUserJoined = true;
+        document.getElementById('joinBtn').disabled = true;  // Disable 'Join Chat' button
+        document.getElementById('roleSelect').disabled = true;  // Disable role selection
+
+        alert("You have joined as " + userRole);
+        document.getElementById('chatContainer').style.display = 'block';  // Show chat container
+
+        // Show admin tools if the user is an admin
+        if (userRole === 'admin') {
+            document.getElementById('adminTools').style.display = 'block';
+        }
+    }
+
+    // Function to send a message
+    function sendMessage() {
+        if (isUserJoined) {
+            const messageInput = document.getElementById('message');
+            const messageText = messageInput.value.trim();
+
+            if (messageText !== '') {
+                const messageBox = document.getElementById('chatBox');
+                
+                // Create new message element
+                const newMessage = document.createElement('div');
+                newMessage.classList.add('message');
+                newMessage.innerHTML = `<span>${userRole.charAt(0).toUpperCase() + userRole.slice(1)}:</span> ${messageText}`;
+                
+                // Add message to chat box
+                messageBox.appendChild(newMessage);
+                
+                // Scroll to the bottom
+                messageBox.scrollTop = messageBox.scrollHeight;
+
+                // Clear input field
+                messageInput.value = '';
+            }
+        } else {
+            alert("Please join the chat first.");
+        }
+    }
+
+    // Function for Admin to clear chat
+    function clearChat() {
+        document.getElementById('chatBox').innerHTML = '';
+    }
+
+    // Function for Admin to view reports (Simulation)
+    function viewReports() {
+        alert("Viewing reports is not yet implemented.");
+    }
+</script>
+
+</body>
+</html>

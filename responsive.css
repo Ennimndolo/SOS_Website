@@ -1,0 +1,21 @@
+/* Responsiveness for all tables */
+@media (max-width: 800px){
+    #table_div .table_sex{
+    display: none;
+    }
+    #table_div .table_title{
+        display: none;
+    }
+    #table_div .table_gender{
+        display: none;
+    }
+    #table_div .table_trades{
+        display: none;
+    }
+}
+.calendar_link{
+    color: ghostwhite;
+    text-decoration: none;
+    font-weight: bold;
+  
+  }

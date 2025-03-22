@@ -1,0 +1,75 @@
+/* Feature Section Wrapper */
+.feature-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Feature Cards Container (Horizontal Scroll) */
+.feature-cards-container {
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    width: 80%;
+}
+
+/* Feature Cards */
+.feature-cards {
+    display: flex;
+    flex-shrink: 0;
+    gap: 20px;
+}
+
+/* Individual Feature Card */
+.feature-card {
+    min-width: 300px;
+    background: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-in-out;
+}
+
+.feature-card:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Arrows */
+.arrow {
+    font-size: 2rem;
+    color: #333;
+    background-color: #f1f1f1;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
+
+.arrow:hover {
+    background-color: #ddd;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .feature-cards-container {
+        width: 100%;
+    }
+
+    .arrow {
+        font-size: 1.5rem;
+    }
+}

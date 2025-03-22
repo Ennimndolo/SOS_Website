@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOS VTC Education System</title>
+    <link rel="stylesheet" href="edu.css">
+    <link rel="stylesheet" href="class.css">
+    <style>
+        /* CSS Enhancements (as provided earlier) */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .edu {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .head nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: dodgerblue;
+        }
+
+        .head nav .logo img {
+            height: 50px;
+        }
+
+        .head nav h1 {
+            margin: 0;
+            color: white;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            height: 3px;
+            width: 25px;
+            background-color: white;
+            margin: 3px 0;
+            transition: 0.4s;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-left: 1rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: lightblue;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .structure, .student-union, .partners, .departments {
+            background-color: #333;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            background-color: #444;
+            color: white;
+        }
+
+        th, td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #555;
+        }
+
+        th {
+            background-color: #555;
+        }
+
+        .partner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .oldmutual, .compassion {
+            text-align: center;
+            margin: 1rem;
+        }
+
+        .oldmutual img, .compassion img {
+            height: 80px;
+        }
+
+        .container-form {
+            width: 90%;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+        }
+
+        .container-form form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container-form input, .container-form textarea, .container-form button {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .container-form button {
+            background-color: dodgerblue;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .container-form button:hover {
+            background-color: lightblue;
+        }
+
+        .footer {
+            background-color: #222;
+            color: white;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            text-align: left;
+        }
+
+        .footer img {
+            height: 60px;
+        }
+
+        .footer a {
+            color: lightgray;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: dodgerblue;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: dodgerblue;
+                position: absolute;
+                top: 60px;
+                left: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="edu">
+        <header class="head">
+            <nav id="nav-hum">
+                <div class="logo">
+                    <img src="sos_logo.png" alt="Logo">
+                </div>
+                <h1>SOS VTC Education System</h1>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#contact-form">Contact Us</a></li>
+                    <li><a href="#contact-form">Become a Partner</a></li>
+                    <li><a href="#contact-form">Apply for the Course</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="container">
+            <section class="structure">
+                <h1 style="color: #cec8c8;">Staff Structure</h1>
+                <p style="color: #cec8c8;">This is to show you the hierarchical structure of SOS VTC staff members.</p>
+                <a href="#hierachy"><button id="structure-btn">See Hierarchy Here</button></a>
+            </section>
+            <section class="student-union">
+                <h1 style="color: #cec8c8;">Student Union</h1>
+                <p style="color: #cec8c8;">This is to show you our active student Union council structure.</p>
+                <a href="#studentUnion"><button id="union-btn">See SUC Here</button></a>
+            </section>
+            <section class="partners">
+                <h1 style="color: #cec8c8;">Current Partners</h1>
+                <p style="color: #cec8c8;">This is to show you our current partners.</p>
+                <div class="partner">
+                    <div class="oldmutual">
+                        <img src="oldmutual.png" alt="oldmutual">
+                        <p>Old Mutual</p>
+                    </div>
+                    <div class="compassion">
+                        <img src="compassion.png" alt="compassion">
+                        <p>Compassion International</p>
+                    </div>
+                </div>
+            </section>
+            <section class="departments">
+                <h1 style="color: #cec8c8;">Departments</h1>
+                <p style="color: #cec8c8;">This is to show you the current departments at SOS VTC.</p>
+                <a href="#departments"><button id="department-btn">See Departments Here</button></a>
+            </section>
+
+            <section id="hierachy">
+                <h2>Section A. [SOS Vocational Training Centre Hierarchy]</h2>
+                <table>
+                    <tr>
+                        <th>Position</th>
+                        <th>Title</th>
+                        <th>Full Name</th>
+                        <th>Sex</th>
+                        <th>Duties</th>
+                    </tr>
+                    <tr>
+                        <td>The Principal</td>
+                        <td>[Miss]</td>
+                        <td>[Margaret Mphwiyo]</td>
+                        <td>[Female]</td>
+                        <td>
+                            <ol>
+                                <li>Organizing meetings</li>
+                                <li>Distributing responsibilities</li>
+                                <li>Ensuring quality delivery of curriculum content</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Projector Director</td>
+                        <td>[Miss]</td>
+                        <td>[Ruth chomboto]</td>
+                        <td>[Female]</td>
+                        <td>
+                            <ol>
+                                <li>Coordinating with the external project managers</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>The head of Academics</td>
+                        <td>[Mr]</td>
+                        <td>[Bennito Mtegha]</td>
+                        <td>[Male]</td>
+                        <td>
+                            <ol>
+                                <li>Organizing meetings</li>
+                                <li>Holding meetings in the absence of the Principal</li>
+                                <li>Ensuring quality delivery of curriculum content</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Instructor</td>
+                        <td>[Mr]</td>
+                        <td>[John Masingolo]</td>
+                        <td>[Male]</td>
+                        <td>
+                            <ol>
+                                <li>Delivering the curriculum content</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Instructor</td>
+                        <td>[Mr]</td>
+                        <td>[Chagoma]</td>
+                        <td>[Male]</td>
+                        <td>
+                            <ol>
+                                <li>Delivering the curriculum content</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Instructor</td>
+                        <td>[Mr]</td>
+                        <td>[Chrispin Chinthuzi]</td>
+                        <td>[Male]</td>
+                        <td>
+                            <ol>
+                                <li>Delivering the curriculum content</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Instructor</td>
+                        <td>[Mr]</td>
+                        <td>[Damiano Sadyeka]</td>
+                        <td>[Male]</td>
+                        <td>
+                            <ol>
+                                <li>Delivering the curriculum content</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Instructor</td>
+                        <td>[Mrs]</td>
+                        <td>[Rhoda Mafuleka]</td>
+                        <td>[Female]</td>
+                        <td>
+                            <ol>
+                                <li>Delivering the curriculum content</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Instructor</td>
+                        <td>[Mrs]</td>
+                        <td>[Veronika Ng'ambi]</td>
+                        <td>[Female]</td>
+                        <td>
+                            <ol>
+                                <li>Delivering the curriculum content</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Instructor</td>
+                        <td>[Mr]</td>
+                        <td>[Sandfore Banda]</td>
+                        <td>[Male]</td>
+                        <td>
+                            <ol>
+                                <li>Delivering the curriculum content</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Instructor</td>
+                        <td>[Mr]</td>
+                        <td>[Athony Banda]</td>
+                        <td>[Male]</td>
+                        <td>
+                            <ol>
+                                <li>Delivering the curriculum content</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Instructor</td>
+                        <td>[Miss]</td>
+                        <td>[Thandie Mussa]</td>
+                        <td>[Female]</td>
+                        <td>
+                            <ol>
+                                <li>Delivering the curriculum content</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Instructor</td>
+                        <td>[Mr]</td>
+                        <td>[Hamilton Tembo]</td>
+                        <td>[Male]</td>
+                        <td>
+                            <ol>
+                                <li>Delivering the curriculum content</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Instructor</td>
+                        <td>[Mr]</td>
+                        <td>[Richard Kufetula]</td>
+                        <td>[Male]</td>
+                        <td>
+                            <ol>
+                                <li>Delivering the curriculum content</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Instructor</td>
+                        <td>[Mr]</td>
+                        <td>[Daniel Kumwenda]</td>
+                        <td>[Male]</td>
+                        <td>
+                            <ol>
+                                <li>Delivering the curriculum content</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Instructor</td>
+                        <td>[Mr]</td>
+                        <td>[S Chanza]</td>
+                        <td>[Male]</td>
+                        <td>
+                            <ol>
+                                <li>Delivering the curriculum content</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Instructor</td>
+                        <td>[Mr]</td>
+                        <td>[Chifuniro Nkhoma]</td>
+                        <td>[Male]</td>
+                        <td>
+                            <ol>
+                                <li>Delivering the curriculum content</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Instructor</td>
+                        <td>[Mr]</td>
+                        <td>[Enson Mndolo]</td>
+                        <td>[Male]</td>
+                        <td>
+                            <ol>
+                                <li>Delivering the curriculum content</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Messenger</td>
+                        <td>[Mr]</td>
+                        <td>[Geoffrey Mbuziyadula]</td>
+                        <td>[Male]</td>
+                        <td>
+                            <ol>
+                                <li>Cleaning the offices</li>
+                                <li>Preparing tea for the staff members</li>
+                                <li>Handling the requisition of different items necessary for delivery</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    </table>
+            </section>
+
+            <section id="studentUnion">
+                <h2>Student Union Council</h2>
+                <p>Add Student Union information here</p>
+            </section>
+
+            <section id="departments">
+                <h2>Departments</h2>
+                <p>Add Department information here</p>
+            </section>
+
+            <section class="container-form" id="contact-form">
+                <h2>Contact Us</h2>
+                <form id="contactForm">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            </section>
+        </main>
+        <footer class="footer">
+            <img src="sos_logo.png" alt="SOS Logo">
+            <div>
+                <h3>Quick Links</h3>
+                <a href="#">Home</a>
+                <a href="#contact-form">Contact Us</a>
+                <a href="#contact-form">Become a Partner</a>
+                <a href="#contact-form">Apply for the Course</a>
+            </div>
+            <div>
+                <h3>Contact Info</h3>
+                <p>Address: [Your Address]</p>
+                <p>Email: [Your Email]</p>
+                <p>Phone: [Your Phone]</p>
+            </div>
+        </footer>
+        <button id="backToTop">Back to Top</button>
+    </div>
+
+    <script>
+        // JavaScript Enhancements
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const backToTopButton = document.getElementById('backToTop');
+        const contactForm = document.getElementById('contactForm');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        window.onscroll = () => {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        };
+
+        backToTopButton.addEventListener('click', () => {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        });
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Basic form submission handling (add server-side processing here)
+            alert('Form submitted!');
+            contactForm.reset();
+        });
+
+      // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+</body>
+</html>
